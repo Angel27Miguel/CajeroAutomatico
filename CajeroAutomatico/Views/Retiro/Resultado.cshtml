@@ -1,0 +1,30 @@
+﻿@model Aplicacion.ViewModels.RetiroResultadoViewModel
+
+<h1 class="offset-sm-3">Cajero Automático de Angel Miguel</h1>
+<div class="row">
+    <div class="col-4 col-sm-4 offset-sm-4 ">
+        <div class="card">
+            <div class="card-header bg-success text-light">
+                <strong>Resultado del Retiro</strong>
+            </div>
+            <div class="card-body">
+                @if (Model.ErrorMessage != null)
+                {
+                    <p style="color: red;">@Model.ErrorMessage</p>
+                }
+                else
+                {
+                    <p>Has retirado @Model.MontoTotal</p>
+                    <p>Denominaciones:</p>
+                    <ul>
+                        @foreach (var denomination in Model.Denominaciones ?? new Dictionary<int, int>())
+                        {
+                            <li>@denomination.Key: @denomination.Value billetes</li>
+                        }
+                    </ul>
+                }
+                <a href="/Retiro/Index" class="btn btn-outline-secondary">Retirar más dinero</a>
+            </div>
+        </div>
+    </div>
+</div>

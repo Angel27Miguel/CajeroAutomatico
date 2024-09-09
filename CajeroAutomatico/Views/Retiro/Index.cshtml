@@ -1,0 +1,22 @@
+﻿@model Aplicacion.ViewModels.RetirarViewModel
+
+<h1 class="offset-sm-3">Cajero Automático de Angel Miguel</h1>
+<div class="row">
+    <div class="col-4 col-sm-4 offset-sm-4 ">
+        <div class="card">
+            <div class="card-header bg-secondary text-light"><strong>Retirar</strong></div>
+            <div class="card-body">
+                <form method="post" action="/Retiro/RetirarDinero">
+                    <label>Monto a retirar:</label>
+                    <input type="number" name="Monto" required min="100" step="100" />
+                    <button type="submit" class="btn btn-outline-success ">Retirar</button>
+
+                    @if (ViewData.ModelState[""]?.Errors.Count > 0)
+                    {
+                        <p style="color: red;">@ViewData.ModelState[""].Errors[0].ErrorMessage</p>
+                    }
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

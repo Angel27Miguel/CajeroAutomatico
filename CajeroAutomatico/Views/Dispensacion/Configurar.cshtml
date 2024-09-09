@@ -1,0 +1,36 @@
+﻿@model Aplicacion.ViewModels.DispensacionViewModel
+
+@{
+    // Construir las opciones condicionalmente
+    var opcionEficiente = Model.SeleccionarModo == "eficiente" ?
+        "<option value=\"eficiente\" selected>Eficiente</option>" :
+        "<option value=\"eficiente\">Eficiente</option>";
+
+    var opcion200_1000 = Model.SeleccionarModo == "200_1000" ?
+        "<option value=\"200_1000\" selected>200 y 1000</option>" :
+        "<option value=\"200_1000\">200 y 1000</option>";
+
+    var opcion100_500 = Model.SeleccionarModo == "100_500" ?
+        "<option value=\"100_500\" selected>100 y 500</option>" :
+        "<option value=\"100_500\">100 y 500</option>";
+}
+
+<div class="row">
+    <h1 class="offset-sm-3">Cajero Automático de Angel Miguel</h1>
+    <div class="col-4 col-sm-4 offset-sm-4">
+        <div class="card">
+            <div class="card-header bg-primary text-light"><strong>Modo de dispensación</strong></div>
+            <div class="card-body">
+                <form method="post" action="/Dispensacion/Configurar">
+                    <label>Seleccione el modo de dispensación: </label>
+                    <select name="SeleccionarModo">
+                        @Html.Raw(opcionEficiente)
+                        @Html.Raw(opcion200_1000)
+                        @Html.Raw(opcion100_500)
+                    </select>
+                    <button class="offset-4 btn btn-outline-dark" typbe="submit">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
